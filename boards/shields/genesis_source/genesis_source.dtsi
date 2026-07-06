@@ -1,11 +1,11 @@
 // This file was generated from a template. Edit it to match your keyboard.
 // See https://zmk.dev/docs/development/hardware-integration/new-shield for more
-// instructions.
 
 #include <dt-bindings/zmk/matrix_transform.h>
 
 #include "genesis_source-layouts.dtsi"
 
+/*
 / {
     chosen {
         zmk,physical-layout = &default_layout;
@@ -43,4 +43,34 @@
             RC(1, 0) RC(1, 1)    RC(1, 2) RC(1, 3)
         >;
     };
-};
+}; 
+*/
+
+/ {
+    chosen {
+        zmk,physical-layout = &default_layout;
+    };
+
+    kscan: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+        wakeup-source;
+
+        row-gpios
+            = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+    };
+
+    default_transform: default_transform {
+        compatible = "zmk,matrix-transform";
+        columns = <4>;
+        rows = <2>;
+
+        map = <
+            RC(0, 0) RC(0, 1)    RC(0, 2) RC(0, 3)
+            RC(1, 0) RC(1, 1)    RC(1, 2) RC(1, 3)
+        >;
+    };
+}; 
+
