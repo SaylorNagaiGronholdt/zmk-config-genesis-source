@@ -1,0 +1,5 @@
+config SHIELD_GENESIS_SOURCE_LEFT
+    def_bool $(shields_list_contains,genesis_source_left)
+
+config SHIELD_GENESIS_SOURCE_RIGHT
+    def_bool $(shields_list_contains,genesis_source_right)
